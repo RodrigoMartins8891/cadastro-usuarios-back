@@ -5,8 +5,7 @@ import cors from 'cors';
 import { cadastraLead } from './servicos/cadastro_servico.js';
 import { validaUsuario } from './validacao/valida.js';
 
-
-const app = new express();
+const app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -24,8 +23,7 @@ app.post('/usuarios', async (req, res) => {
     }
 });
 
-
-app.listen(3001, async () => {
+app.listen(process.env.PORT || 3001, async () => {
     console.log("Servidor Iniciado");
 
     const conexao = await pool.getConnection();
